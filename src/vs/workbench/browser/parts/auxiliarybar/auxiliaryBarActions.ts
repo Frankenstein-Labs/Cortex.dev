@@ -31,7 +31,7 @@ const auxiliaryBarLeftOffIcon = registerIcon('auxiliarybar-left-off-layout-icon'
 export class ToggleAuxiliaryBarAction extends Action2 {
 
 	static readonly ID = 'workbench.action.toggleAuxiliaryBar';
-	static readonly LABEL = localize2('toggleAuxiliaryBar', "Toggle PearAI Side Bar Visibility");
+	static readonly LABEL = localize2('toggleAuxiliaryBar', "Toggle Cortex Side Bar Visibility");
 
 	constructor() {
 		super({
@@ -39,7 +39,7 @@ export class ToggleAuxiliaryBarAction extends Action2 {
 			title: ToggleAuxiliaryBarAction.LABEL,
 			toggled: {
 				condition: AuxiliaryBarVisibleContext,
-				title: localize('secondary sidebar', "PearAI Side Bar"),
+				title: localize('secondary sidebar', "Cortex Side Bar"),
 				mnemonicTitle: localize({ key: 'secondary sidebar mnemonic', comment: ['&& denotes a mnemonic'] }, "Secondary Si&&de Bar"),
 			},
 
@@ -84,7 +84,7 @@ registerAction2(ToggleAuxiliaryBarAction);
 registerAction2(class FocusAuxiliaryBarAction extends Action2 {
 
 	static readonly ID = 'workbench.action.focusAuxiliaryBar';
-	static readonly LABEL = localize2('focusAuxiliaryBar', "Focus into PearAI Side Bar");
+	static readonly LABEL = localize2('focusAuxiliaryBar', "Focus into Cortex Side Bar");
 
 	constructor() {
 		super({
@@ -117,7 +117,7 @@ MenuRegistry.appendMenuItems([
 			group: '2_pane_toggles',
 			command: {
 				id: ToggleAuxiliaryBarAction.ID,
-				title: localize('toggleSecondarySideBar', "Toggle PearAI Side Bar"),
+				title: localize('toggleSecondarySideBar', "Toggle Cortex Side Bar"),
 				toggled: { condition: AuxiliaryBarVisibleContext, icon: auxiliaryBarLeftIcon },
 				icon: auxiliaryBarLeftOffIcon,
 			},
@@ -130,7 +130,7 @@ MenuRegistry.appendMenuItems([
 			group: '2_pane_toggles',
 			command: {
 				id: ToggleAuxiliaryBarAction.ID,
-				title: localize('toggleSecondarySideBar', "Toggle PearAI Side Bar"),
+				title: localize('toggleSecondarySideBar', "Toggle Cortex Side Bar"),
 				toggled: { condition: AuxiliaryBarVisibleContext, icon: auxiliaryBarRightIcon },
 				icon: auxiliaryBarRightOffIcon,
 			},
@@ -143,7 +143,7 @@ MenuRegistry.appendMenuItems([
 			group: '3_workbench_layout_move',
 			command: {
 				id: ToggleAuxiliaryBarAction.ID,
-				title: localize2('hideAuxiliaryBar', 'Hide PearAI Side Bar'),
+				title: localize2('hideAuxiliaryBar', 'Hide Cortex Side Bar'),
 			},
 			when: ContextKeyExpr.and(AuxiliaryBarVisibleContext, ContextKeyExpr.equals('viewLocation', ViewContainerLocationToString(ViewContainerLocation.AuxiliaryBar))),
 			order: 2
@@ -155,7 +155,7 @@ registerAction2(class extends SwitchCompositeViewAction {
 	constructor() {
 		super({
 			id: 'workbench.action.previousAuxiliaryBarView',
-			title: localize2('previousAuxiliaryBarView', 'Previous PearAI Side Bar View'),
+			title: localize2('previousAuxiliaryBarView', 'Previous Cortex Side Bar View'),
 			category: Categories.View,
 			f1: true
 		}, ViewContainerLocation.AuxiliaryBar, -1);
@@ -166,7 +166,7 @@ registerAction2(class extends SwitchCompositeViewAction {
 	constructor() {
 		super({
 			id: 'workbench.action.nextAuxiliaryBarView',
-			title: localize2('nextAuxiliaryBarView', 'Next PearAI Side Bar View'),
+			title: localize2('nextAuxiliaryBarView', 'Next Cortex Side Bar View'),
 			category: Categories.View,
 			f1: true
 		}, ViewContainerLocation.AuxiliaryBar, 1);
@@ -255,17 +255,17 @@ export class ResizeAuxiliaryBarWidthAction extends Action2 {
 
 registerAction2(ResizeAuxiliaryBarWidthAction);
 
-class FocusPearAIExtensionAction extends Action2 {
-	static readonly ID = 'workbench.action.focusPearAIExtension';
+class FocusCortexExtensionAction extends Action2 {
+	static readonly ID = 'workbench.action.focusCortexExtension';
 	static readonly LABEL = localize2(
-		"focusPearAIExtension",
-		"Focus into PearAI Extension",
+		"focusCortexExtension",
+		"Focus into Cortex Extension",
 	);
 
 	constructor() {
 		super({
-			id: FocusPearAIExtensionAction.ID,
-			title: FocusPearAIExtensionAction.LABEL,
+			id: FocusCortexExtensionAction.ID,
+			title: FocusCortexExtensionAction.LABEL,
 			category: Categories.View,
 			f1: true,
 			// keybinding: do not add keybinding CTRL/CMD L here, it comes from pearai extension
@@ -279,21 +279,21 @@ class FocusPearAIExtensionAction extends Action2 {
 	}
 }
 
-registerAction2(FocusPearAIExtensionAction);
+registerAction2(FocusCortexExtensionAction);
 
-// Following is a only PearAI related action, need to refactor these type of actions to separate file
+// Following is a only Cortex related action, need to refactor these type of actions to separate file
 
-class OpenPearAIDocsAction extends Action2 {
-	static readonly ID = 'workbench.action.openPearAIDocs';
+class OpenCortexDocsAction extends Action2 {
+	static readonly ID = 'workbench.action.openCortexDocs';
 	static readonly LABEL = localize2(
-		"openPearAIDocs",
-		"Open PearAI Documentation",
+		"openCortexDocs",
+		"Open Cortex Documentation",
 	);
 
 	constructor() {
 		super({
-			id: OpenPearAIDocsAction.ID,
-			title: OpenPearAIDocsAction.LABEL,
+			id: OpenCortexDocsAction.ID,
+			title: OpenCortexDocsAction.LABEL,
 			category: Categories.Help,
 			f1: true,
 		});
@@ -302,21 +302,21 @@ class OpenPearAIDocsAction extends Action2 {
 	override async run(accessor: ServicesAccessor): Promise<void> {
 		const openerService = accessor.get(IOpenerService);
 		const productService = accessor.get(IProductService);
-		if (!productService.pearAILinks?.docs) {
+		if (!productService.cortexLinks?.docs) {
 			return;
 		}
-		await openerService.open(URI.parse(productService.pearAILinks?.docs));
+		await openerService.open(URI.parse(productService.cortexLinks?.docs));
 	}
 }
 
-registerAction2(OpenPearAIDocsAction);
+registerAction2(OpenCortexDocsAction);
 
 MenuRegistry.appendMenuItems([
 	{
 		id: MenuId.CommandCenter,
 		item: {
 			command: {
-				id: OpenPearAIDocsAction.ID,
+				id: OpenCortexDocsAction.ID,
 				title: 'Docs',
 			},
 			order: 20000,

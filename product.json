@@ -1,7 +1,7 @@
 {
 	"nameShort": "Cortex",
 	"nameLong": "Cortex.dev",
-	"pearAIVersion": "2.0.0",
+	"cortexVersion": "2.0.0",
 	"applicationName": "cortex-dev",
 	"dataFolderName": ".cortex",
 	"win32MutexName": "cortex-dev",
@@ -30,7 +30,7 @@
 	"darwinBundleIdentifier": "com.visualstudio.code.oss",
 	"linuxIconName": "cortex",
 	"licenseFileName": "LICENSE.txt",
-	"reportIssueUrl": "https://github.com/microsoft/vscode/issues/new",
+	"reportIssueUrl": "https://github.com/Frankenstein-Labs/Cortex.dev/issues/new",
 	"nodejsRepository": "https://nodejs.org",
 	"urlProtocol": "cortex",
 	"quality": "stable",
@@ -1670,14 +1670,14 @@
 	"cesSurveyUrl": "https://aka.ms/new-to-vscode-feedback",
 	"checksumFailMoreInfoUrl": "https://go.microsoft.com/fwlink/?LinkId=828886",
 	"settingsSearchUrl": "https://bingsettingssearch.trafficmanager.net/api/Search",
-	"pearAIHomepageURL": "https://trypear.ai",
-	"pearAILinks": {
-		"homepage": "https://trypear.ai",
-		"dashboard": "https://trypear.ai/dashboard",
-		"faq": "https://trypear.ai/faq",
-		"docs": "https://trypear.ai/docs",
-		"github": "https://github.com/orgs/trypear/repositories",
-		"changelog": "https://trypear.ai/changelog"
+	"cortexHomepageURL": "https://github.com/Frankenstein-Labs/Cortex.dev",
+	"cortexLinks": {
+		"homepage": "https://github.com/Frankenstein-Labs/Cortex.dev",
+		"dashboard": "https://github.com/Frankenstein-Labs/Cortex.dev",
+		"faq": "https://github.com/Frankenstein-Labs/Cortex.dev/issues",
+		"docs": "https://github.com/Frankenstein-Labs/Cortex.dev#readme",
+		"github": "https://github.com/Frankenstein-Labs/Cortex.dev",
+		"changelog": "https://github.com/Frankenstein-Labs/Cortex.dev/releases"
 	},
 	"extensionsEnabledWithApiProposalVersion": [
 		"GitHub.copilot-chat"
@@ -2148,7 +2148,7 @@
 		}
 	},
 	"linkProtectionTrustedDomains": [
-		"https://trypear.ai",
+		"https://github.com/Frankenstein-Labs/Cortex.dev",
 		"https://*.visualstudio.com",
 		"https://*.microsoft.com",
 		"https://aka.ms",

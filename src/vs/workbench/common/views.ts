@@ -26,7 +26,7 @@ import { registerIcon } from '../../platform/theme/common/iconRegistry.js';
 import { CancellationToken } from '../../base/common/cancellation.js';
 import { VSDataTransfer } from '../../base/common/dataTransfer.js';
 import { ILocalizedString } from '../../platform/action/common/action.js';
-import { auxiliaryBarAllowedViewContainerIDs } from '../services/views/pearai/pearaiViewsShared.js';
+import { auxiliaryBarAllowedViewContainerIDs } from '../services/views/cortex/cortexViewsShared.js';
 
 export const VIEWS_LOG_ID = 'views';
 export const VIEWS_LOG_NAME = localize('views log', "Views");

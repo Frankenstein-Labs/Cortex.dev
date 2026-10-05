@@ -55,7 +55,7 @@ export type ExtensionVirtualWorkspaceSupport = {
 };
 
 export interface IProductConfiguration {
-	readonly pearAIVersion?: string;
+	readonly cortexVersion?: string;
 	readonly version: string; // vscode version
 	readonly date?: string;
 	readonly quality?: string;
@@ -154,8 +154,8 @@ export interface IProductConfiguration {
 	readonly licenseUrl?: string;
 	readonly serverLicenseUrl?: string;
 	readonly privacyStatementUrl?: string;
-	readonly pearAIHomepageURL?: string;
-	readonly pearAILinks?: {
+	readonly cortexHomepageURL?: string;
+	readonly cortexLinks?: {
 		homepage: string;
 		dashboard: string;
 		faq: string;

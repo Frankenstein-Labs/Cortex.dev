@@ -27,7 +27,7 @@ export const enum Parts {
 	AUXILIARYBAR_PART = 'workbench.parts.auxiliarybar',
 	EDITOR_PART = 'workbench.parts.editor',
 	STATUSBAR_PART = 'workbench.parts.statusbar',
-	PEAROVERLAY_PART = 'workbench.parts.pearoverlay',
+	CORTEXOVERLAY_PART = 'workbench.parts.cortexoverlay',
 	PEARCREATOROVERLAY_PART = 'workbench.parts.pearcreatoroverlay'
 }
 
@@ -55,7 +55,7 @@ export const bubblyParts: Record<string, BubblyPartSettings> = {
 		customTitleHeight: 46
 	},
 	[Parts.EDITOR_PART]: defaultBubblySettings,
-	[Parts.PEAROVERLAY_PART]: {
+	[Parts.CORTEXOVERLAY_PART]: {
 		borderRadius: 0,
 		margins: {left: 0, top: 0, right: 0, bottom: 0}
 	},

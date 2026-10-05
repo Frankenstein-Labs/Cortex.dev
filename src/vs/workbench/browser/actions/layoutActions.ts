@@ -32,7 +32,7 @@ import { mainWindow } from '../../../base/browser/window.js';
 import { IKeybindingService } from '../../../platform/keybinding/common/keybinding.js';
 import { TitlebarStyle } from '../../../platform/window/common/window.js';
 import { IPreferencesService } from '../../services/preferences/common/preferences.js';
-import { TogglePearOverlayAction } from '../parts/overlay/pearOverlayActions.js';
+import { ToggleCortexOverlayAction } from '../parts/overlay/cortexOverlayActions.js';
 import { ToggleCreatorOverlayAction } from '../parts/overlay/creatorView/creatorOverlayActions.js';
 
 // Register Icons
@@ -1441,7 +1441,7 @@ ToggleVisibilityActions.push(...[
 	CreateToggleLayoutItem(ToggleAuxiliaryBarAction.ID, AuxiliaryBarVisibleContext, localize('secondarySideBar', "PearAI Side Bar"), { whenA: ContextKeyExpr.equals('config.workbench.sideBar.location', 'left'), iconA: panelRightIcon, iconB: panelLeftIcon }),
 	CreateToggleLayoutItem(TogglePanelAction.ID, PanelVisibleContext, localize('panel', "Panel"), panelIcon),
 	CreateToggleLayoutItem(ToggleStatusbarVisibilityAction.ID, ContextKeyExpr.equals('config.workbench.statusBar.visible', true), localize('statusBar', "Status Bar"), statusBarIcon),
-	CreateToggleLayoutItem(TogglePearOverlayAction.ID, PearAIVisibleContext, 'PearAI', pearaiIcon),
+	CreateToggleLayoutItem(ToggleCortexOverlayAction.ID, PearAIVisibleContext, 'PearAI', pearaiIcon),
 	CreateToggleLayoutItem(ToggleCreatorOverlayAction.ID, PearAICreatorVisibleContext, 'PearAI Creator'),
 ]);
 

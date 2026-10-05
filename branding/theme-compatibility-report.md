@@ -47,7 +47,7 @@ L’icône de la barre latérale et le splash de l’agent utilisent le symbole 
 
 ## Correction effectuée pendant le contrôle
 
-Deux libellés visibles restaient marqués PearAI dans l’interface de l’agent. Ils ont été remplacés par :
+Deux libellés visibles restaient marqués par l’ancien branding dans l’interface de l’agent. Ils ont été remplacés par :
 
 - `Cortex Agent`
 - `Cortex Coding Agent`

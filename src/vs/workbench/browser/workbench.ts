@@ -49,7 +49,7 @@ import { AccessibilityProgressSignalScheduler } from '../../platform/accessibili
 import { setProgressAcccessibilitySignalScheduler } from '../../base/browser/ui/progressbar/progressAccessibilitySignal.js';
 import { AccessibleViewRegistry } from '../../platform/accessibility/browser/accessibleViewRegistry.js';
 import { NotificationAccessibleView } from './parts/notifications/notificationAccessibleView.js';
-import { IPearOverlayService } from '../browser/parts/overlay/pearOverlayService.js';
+import { ICortexOverlayService } from '../browser/parts/overlay/cortexOverlayService.js';
 import { IShadowOverlayService } from './parts/overlay/onboardingShadow/shadowOverlayService.js';
 import { ICreatorOverlayService } from './parts/overlay/creatorView/creatorOverlayService.js';
 
@@ -345,14 +345,14 @@ export class Workbench extends Layout {
 			{ id: Parts.PANEL_PART, role: 'none', classes: ['panel', 'basepanel', positionToString(this.getPanelPosition())] },
 			{ id: Parts.AUXILIARYBAR_PART, role: 'none', classes: ['auxiliarybar', 'basepanel', this.getSideBarPosition() === Position.LEFT ? 'right' : 'left'] },
 			{ id: Parts.STATUSBAR_PART, role: 'status', classes: ['statusbar'] },
-			{ id: Parts.PEAROVERLAY_PART, role: 'none', classes: [] },
+			{ id: Parts.CORTEXOVERLAY_PART, role: 'none', classes: [] },
 			{ id: Parts.PEARCREATOROVERLAY_PART, role: 'none', classes: [] },
 		]) {
 			const partContainer = this.createPart(id, role, classes);
 
-			if (id === Parts.PEAROVERLAY_PART) {
+			if (id === Parts.CORTEXOVERLAY_PART) {
 				instantiationService.invokeFunction(accessor => {
-					accessor.get(IPearOverlayService);
+					accessor.get(ICortexOverlayService);
 				});
 			}
 

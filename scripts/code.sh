@@ -6,8 +6,8 @@ set -e
 # CONFIGURATION SECTION - Edit these variables to match your environment
 # ===========================================================================
 
-# Path to PearAI-Roo-Code extension
-PEARAI_ROO_CODE_PATH="./../PearAI-Roo-Code"
+# Path to Cortex-Agent extension
+CORTEX_AGENT_PATH="./../Cortex-Agent"
 
 # Path to pearai-submodule vscode extension
 PEARAI_SUBMODULE_PATH="./../pearai-submodule/extensions/vscode"
@@ -42,17 +42,17 @@ EXTENSION_PATHS=(
     "${ROOT}/extensions/vscode"
 )
 
-# Add PearAI extensions
-if [[ -d "${ROOT}/${PEARAI_ROO_CODE_PATH}" ]]; then
-    EXTENSION_PATHS+=("${ROOT}/${PEARAI_ROO_CODE_PATH}")
+# Add Cortex.dev extensions
+if [[ -d "${ROOT}/${CORTEX_AGENT_PATH}" ]]; then
+    EXTENSION_PATHS+=("${ROOT}/${CORTEX_AGENT_PATH}")
 else
-    echo "Warning: PearAI-Roo-Code extension path not found at ${ROOT}/${PEARAI_ROO_CODE_PATH}"
+    echo "Warning: Cortex-Agent extension path not found at ${ROOT}/${CORTEX_AGENT_PATH}"
 fi
 
 if [[ -d "${ROOT}/${PEARAI_SUBMODULE_PATH}" ]]; then
     EXTENSION_PATHS+=("${ROOT}/${PEARAI_SUBMODULE_PATH}")
 else
-    echo "Warning: PearAI submodule vscode extension path not found at ${ROOT}/${PEARAI_SUBMODULE_PATH}"
+    echo "Warning: Cortex.dev submodule vscode extension path not found at ${ROOT}/${PEARAI_SUBMODULE_PATH}"
 fi
 
 # Function to check if directory exists and add to extension paths

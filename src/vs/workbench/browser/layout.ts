@@ -269,7 +269,7 @@ export abstract class Layout extends Disposable implements IWorkbenchLayoutServi
 	private auxiliaryBarPartView!: ISerializableView;
 	private editorPartView!: ISerializableView;
 	private statusBarPartView!: ISerializableView;
-	private pearOverlayPartView!: ISerializableView;
+	private cortexOverlayPartView!: ISerializableView;
 	private pearCreatorOverlayPartView!: ISerializableView;
 
 	private environmentService!: IBrowserWorkbenchEnvironmentService;
@@ -1854,7 +1854,7 @@ export abstract class Layout extends Disposable implements IWorkbenchLayoutServi
 		const auxiliaryBarPart = this.getPart(Parts.AUXILIARYBAR_PART);
 		const sideBar = this.getPart(Parts.SIDEBAR_PART);
 		const statusBar = this.getPart(Parts.STATUSBAR_PART);
-		const pearOverlayPart = this.getPart(Parts.PEAROVERLAY_PART);
+		const cortexOverlayPart = this.getPart(Parts.CORTEXOVERLAY_PART);
 		// const pearCreatorOverlayPart = this.getPart(Parts.PEARCREATOROVERLAY_PART);
 
 		// View references for all parts
@@ -1866,22 +1866,22 @@ export abstract class Layout extends Disposable implements IWorkbenchLayoutServi
 		this.panelPartView = panelPart;
 		this.auxiliaryBarPartView = auxiliaryBarPart;
 		this.statusBarPartView = statusBar;
-		this.pearOverlayPartView = pearOverlayPart;
+		this.cortexOverlayPartView = cortexOverlayPart;
 
-		// Create a new container for PearOverlayPart
-		const pearOverlayPartContainer = document.createElement("div");
-		pearOverlayPartContainer.style.position = "absolute";
-		pearOverlayPartContainer.style.top = "0";
-		pearOverlayPartContainer.style.left = "0";
-		pearOverlayPartContainer.style.right = "0";
-		pearOverlayPartContainer.style.bottom = "0";
-		pearOverlayPartContainer.style.zIndex = "-10";
-		pearOverlayPartContainer.style.display = "absolute";
-		pearOverlayPartContainer.classList.add("pearoverlay-part-container");
-		pearOverlayPartContainer.style.backgroundColor = 'transparent';
+		// Create a new container for CortexOverlayPart
+		const cortexOverlayPartContainer = document.createElement("div");
+		cortexOverlayPartContainer.style.position = "absolute";
+		cortexOverlayPartContainer.style.top = "0";
+		cortexOverlayPartContainer.style.left = "0";
+		cortexOverlayPartContainer.style.right = "0";
+		cortexOverlayPartContainer.style.bottom = "0";
+		cortexOverlayPartContainer.style.zIndex = "-10";
+		cortexOverlayPartContainer.style.display = "absolute";
+		cortexOverlayPartContainer.classList.add("cortexoverlay-part-container");
+		cortexOverlayPartContainer.style.backgroundColor = 'transparent';
 
-		this.mainContainer.appendChild(pearOverlayPartContainer);
-		pearOverlayPart.create(pearOverlayPartContainer);
+		this.mainContainer.appendChild(cortexOverlayPartContainer);
+		cortexOverlayPart.create(cortexOverlayPartContainer);
 
 		const viewMap = {
 			[Parts.ACTIVITYBAR_PART]: this.activityBarPartView,
@@ -1892,7 +1892,7 @@ export abstract class Layout extends Disposable implements IWorkbenchLayoutServi
 			[Parts.SIDEBAR_PART]: this.sideBarPartView,
 			[Parts.STATUSBAR_PART]: this.statusBarPartView,
 			[Parts.AUXILIARYBAR_PART]: this.auxiliaryBarPartView,
-			[Parts.PEAROVERLAY_PART]: this.pearOverlayPartView,
+			[Parts.CORTEXOVERLAY_PART]: this.cortexOverlayPartView,
 			[Parts.PEARCREATOROVERLAY_PART]: this.pearCreatorOverlayPartView,
 		};
 
@@ -1963,7 +1963,7 @@ export abstract class Layout extends Disposable implements IWorkbenchLayoutServi
 
 			// Layout the grid widget
 			this.workbenchGrid.layout(this._mainContainerDimension.width, this._mainContainerDimension.height);
-			this.pearOverlayPartView.layout(this._mainContainerDimension.width, this._mainContainerDimension.height, 0, 0);
+			this.cortexOverlayPartView.layout(this._mainContainerDimension.width, this._mainContainerDimension.height, 0, 0);
 			this.initialized = true;
 
 			// Emit as event

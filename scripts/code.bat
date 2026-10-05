@@ -23,7 +23,7 @@ set VSCODE_CLI=1
 set ELECTRON_ENABLE_LOGGING=1
 set ELECTRON_ENABLE_STACK_DUMPING=1
 
-:: Get Pear AI
+:: Get Cortex AI
 setlocal
 cd extensions/pearai-submodule
 powershell.exe -executionpolicy bypass -file .\scripts\build-extension.ps1

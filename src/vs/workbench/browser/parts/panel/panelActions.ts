@@ -15,7 +15,7 @@ import { Codicon } from '../../../../base/common/codicons.js';
 import { registerIcon } from '../../../../platform/theme/common/iconRegistry.js';
 import { ServicesAccessor } from '../../../../editor/browser/editorExtensions.js';
 import { ViewContainerLocationToString, ViewContainerLocation, IViewDescriptorService } from '../../../common/views.js';
-import { PearAIChatExtensionId, PearAISearchExtensionId, PearAIMemoryExtensionId, PearAIRooExtensionId, PearAIView, PEARAI_VIEWS} from '../../../services/views/pearai/pearaiViewsShared.js';
+import { CortexChatExtensionId, CortexSearchExtensionId, CortexMemoryExtensionId, CortexAgentExtensionId, CortexView, CORTEX_VIEWS} from '../../../services/views/cortex/cortexViewsShared.js';
 import { IViewsService } from '../../../services/views/common/viewsService.js';
 import { IPaneCompositePartService } from '../../../services/panecomposite/browser/panecomposite.js';
 import { INotificationService } from '../../../../platform/notification/common/notification.js';
@@ -29,19 +29,19 @@ const closeIcon = registerIcon('panel-close', Codicon.close, localize('closeIcon
 const panelIcon = registerIcon('panel-layout-icon', Codicon.layoutPanel, localize('togglePanelOffIcon', 'Icon to toggle the panel off when it is on.'));
 const panelOffIcon = registerIcon('panel-layout-icon-off', Codicon.layoutPanelOff, localize('togglePanelOnIcon', 'Icon to toggle the panel on when it is off.'));
 
-export class SwitchToPearAIIntegrationAction extends Action2 {
-  static readonly ID = 'workbench.action.switchToPearAIIntegrationIconBar';
+export class SwitchToCortexIntegrationAction extends Action2 {
+  static readonly ID = 'workbench.action.switchToCortexIntegrationIconBar';
 
   constructor() {
     super({
-      id: SwitchToPearAIIntegrationAction.ID,
-    title: localize2('switchToPearAIView', "Switch to PearAI Integration"),
+      id: SwitchToCortexIntegrationAction.ID,
+    title: localize2('switchToCortexView', "Switch to Cortex Integration"),
     category: Categories.View,
     f1: true
     });
   }
 
-  override async run(accessor: ServicesAccessor, args?: { view: PearAIView }): Promise<void> {
+  override async run(accessor: ServicesAccessor, args?: { view: CortexView }): Promise<void> {
     const view = args?.view || 'chat'; // default to chat if no view specified
     const viewsService = accessor.get(IViewsService);
     const layoutService = accessor.get(IWorkbenchLayoutService);
@@ -50,7 +50,7 @@ export class SwitchToPearAIIntegrationAction extends Action2 {
     layoutService.setPartHidden(false, Parts.AUXILIARYBAR_PART);
     }
 
-    await viewsService.openView(PEARAI_VIEWS[view], true);
+    await viewsService.openView(CORTEX_VIEWS[view], true);
   }
 }
 
@@ -340,7 +340,7 @@ registerAction2(class extends Action2 {
 	constructor() {
 		super({
 			id: 'workbench.action.closeAuxiliaryBar',
-			title: localize2('closeSecondarySideBar', 'Hide PearAI Side Bar'),
+			title: localize2('closeSecondarySideBar', 'Hide Cortex Side Bar'),
 			category: Categories.View,
 			icon: closeIcon,
 			menu: [{
@@ -414,7 +414,7 @@ class MoveViewsBetweenPanelsAction extends Action2 {
 }
 
 
-// Move Pear AI extension to PearAI Side Bar (Auxiliary Bar) (we want PearAI Side Bar to be default loaction for extension)
+// Move Pear AI extension to Cortex Side Bar (Auxiliary Bar) (we want Cortex Side Bar to be default loaction for extension)
 class MovePearExtensionToAuxBarAction extends MoveViewsBetweenPanelsAction {
     static readonly ID = 'workbench.action.movePearExtensionToAuxBar';
 
@@ -432,10 +432,10 @@ class MovePearExtensionToAuxBarAction extends MoveViewsBetweenPanelsAction {
         const layoutService = accessor.get(IWorkbenchLayoutService);
         const viewsService = accessor.get(IViewsService);
 
-        const chatViewContainer = viewDescriptorService.getViewContainerById(PearAIChatExtensionId);
-        const searchViewContainer = viewDescriptorService.getViewContainerById(PearAISearchExtensionId);
-        const memoryViewContainer = viewDescriptorService.getViewContainerById(PearAIMemoryExtensionId);
-        const agentViewContainer = viewDescriptorService.getViewContainerById(PearAIRooExtensionId);
+        const chatViewContainer = viewDescriptorService.getViewContainerById(CortexChatExtensionId);
+        const searchViewContainer = viewDescriptorService.getViewContainerById(CortexSearchExtensionId);
+        const memoryViewContainer = viewDescriptorService.getViewContainerById(CortexMemoryExtensionId);
+        const agentViewContainer = viewDescriptorService.getViewContainerById(CortexAgentExtensionId);
 
         const destination = ViewContainerLocation.AuxiliaryBar;
 
@@ -464,14 +464,14 @@ class MovePearExtensionToAuxBarAction extends MoveViewsBetweenPanelsAction {
 
 registerAction2(MovePearExtensionToAuxBarAction);
 
-// --- Move Panel Views To PearAI Side Bar
+// --- Move Panel Views To Cortex Side Bar
 
 class MovePanelToSidePanelAction extends MoveViewsBetweenPanelsAction {
 	static readonly ID = 'workbench.action.movePanelToSidePanel';
 	constructor() {
 		super(ViewContainerLocation.Panel, ViewContainerLocation.AuxiliaryBar, {
 			id: MovePanelToSidePanelAction.ID,
-			title: localize2('movePanelToSecondarySideBar', "Move Panel Views To PearAI Side Bar"),
+			title: localize2('movePanelToSecondarySideBar', "Move Panel Views To Cortex Side Bar"),
 			category: Categories.View,
 			f1: false
 		});
@@ -483,7 +483,7 @@ export class MovePanelToSecondarySideBarAction extends MoveViewsBetweenPanelsAct
 	constructor() {
 		super(ViewContainerLocation.Panel, ViewContainerLocation.AuxiliaryBar, {
 			id: MovePanelToSecondarySideBarAction.ID,
-			title: localize2('movePanelToSecondarySideBar', "Move Panel Views To PearAI Side Bar"),
+			title: localize2('movePanelToSecondarySideBar', "Move Panel Views To Cortex Side Bar"),
 			category: Categories.View,
 			f1: true
 		});
@@ -493,7 +493,7 @@ export class MovePanelToSecondarySideBarAction extends MoveViewsBetweenPanelsAct
 registerAction2(MovePanelToSidePanelAction);
 registerAction2(MovePanelToSecondarySideBarAction);
 
-// --- Move PearAI Side Bar Views To Panel
+// --- Move Cortex Side Bar Views To Panel
 
 class MoveSidePanelToPanelAction extends MoveViewsBetweenPanelsAction {
 	static readonly ID = 'workbench.action.moveSidePanelToPanel';
@@ -501,7 +501,7 @@ class MoveSidePanelToPanelAction extends MoveViewsBetweenPanelsAction {
 	constructor() {
 		super(ViewContainerLocation.AuxiliaryBar, ViewContainerLocation.Panel, {
 			id: MoveSidePanelToPanelAction.ID,
-			title: localize2('moveSidePanelToPanel', "Move PearAI Side Bar Views To Panel"),
+			title: localize2('moveSidePanelToPanel', "Move Cortex Side Bar Views To Panel"),
 			category: Categories.View,
 			f1: false
 		});
@@ -514,7 +514,7 @@ export class MoveSecondarySideBarToPanelAction extends MoveViewsBetweenPanelsAct
 	constructor() {
 		super(ViewContainerLocation.AuxiliaryBar, ViewContainerLocation.Panel, {
 			id: MoveSecondarySideBarToPanelAction.ID,
-			title: localize2('moveSidePanelToPanel', "Move PearAI Side Bar Views To Panel"),
+			title: localize2('moveSidePanelToPanel', "Move Cortex Side Bar Views To Panel"),
 			category: Categories.View,
 			f1: true
 		});

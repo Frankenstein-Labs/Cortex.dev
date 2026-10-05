@@ -631,10 +631,10 @@ function toEntry(theme: IWorkbenchTheme): ThemeItem {
 	return item;
 }
 
-function toEntries(themes: Array<IWorkbenchTheme>, category?: string, showOnlyPearAI: boolean = true): QuickPickInput<ThemeItem>[] {
+function toEntries(themes: Array<IWorkbenchTheme>, category?: string, showOnlyCortex: boolean = true): QuickPickInput<ThemeItem>[] {
 	const sorter = (t1: ThemeItem, t2: ThemeItem) => t1.label.localeCompare(t2.label);
 
-	if (!showOnlyPearAI) {
+	if (!showOnlyCortex) {
 		const entries: QuickPickInput<ThemeItem>[] = themes.map(toEntry).sort(sorter);
 		if (entries.length > 0 && category) {
 			entries.unshift({ type: 'separator', label: category });
