@@ -1,12 +1,13 @@
 # Cortex.dev branding
 
-The Cortex.dev mark is an original geometric neural-circuit symbol created for this project. Its angular ribbon language was informed by the official Visual Studio Code icon located in the Microsoft/vscode repository, but the mark is not a copy of that logo: it uses a distinct C-shaped silhouette, neural nodes, and a cyan/indigo/violet palette.
+The current Cortex.dev mark is an original four-panel grid inspired by the clarity of classic software-platform logos. It is not the Microsoft logo and is not intended to imitate or imply affiliation with Microsoft or Visual Studio Code.
 
-Reference consulted:
-- https://github.com/microsoft/vscode/blob/main/src/vs/workbench/browser/media/code-icon.svg
-
-Cortex.dev is an independent project and is not affiliated with Microsoft or Visual Studio Code.
+Design direction:
+- four rounded panels for the four parts of the Cortex development workflow: understand, build, test, ship;
+- cyan, blue, indigo and violet palette for intelligence, code and creativity;
+- white cross and center point to suggest connection and orchestration;
+- separate mark and horizontal lockup for app icons, website headers and documentation.
 
 Files:
 - `cortex-mark.svg`: standalone app/icon mark with transparent background.
-- `cortex-lockup.svg`: horizontal mark and wordmark for documentation or web headers.
+- `cortex-lockup.svg`: horizontal mark and wordmark.

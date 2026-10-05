@@ -1,23 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
   <title id="title">Cortex.dev mark</title>
-  <desc id="desc">A geometric C-shaped neural circuit mark in cyan, violet and indigo.</desc>
+  <desc id="desc">Four rounded color panels forming the Cortex.dev app mark.</desc>
   <defs>
-    <linearGradient id="cortexGradient" x1="170" y1="140" x2="860" y2="900" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#22D3EE"/>
-      <stop offset="0.48" stop-color="#6366F1"/>
-      <stop offset="1" stop-color="#A855F7"/>
-    </linearGradient>
-    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="18" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
+    <linearGradient id="panelA" x1="120" y1="120" x2="470" y2="470" gradientUnits="userSpaceOnUse"><stop stop-color="#18B6E8"/><stop offset="1" stop-color="#087FC4"/></linearGradient>
+    <linearGradient id="panelB" x1="550" y1="120" x2="900" y2="470" gradientUnits="userSpaceOnUse"><stop stop-color="#4D8CFF"/><stop offset="1" stop-color="#3158D9"/></linearGradient>
+    <linearGradient id="panelC" x1="120" y1="550" x2="470" y2="900" gradientUnits="userSpaceOnUse"><stop stop-color="#5B62E8"/><stop offset="1" stop-color="#3A35B8"/></linearGradient>
+    <linearGradient id="panelD" x1="550" y1="550" x2="900" y2="900" gradientUnits="userSpaceOnUse"><stop stop-color="#A24BEA"/><stop offset="1" stop-color="#6E2CB9"/></linearGradient>
   </defs>
-  <path d="M790 230C704 151 588 110 470 119C276 134 125 289 111 483C94 707 270 897 491 907C610 912 719 870 798 793" fill="none" stroke="url(#cortexGradient)" stroke-width="118" stroke-linecap="round" filter="url(#softGlow)"/>
-  <path d="M790 230C704 151 588 110 470 119C276 134 125 289 111 483C94 707 270 897 491 907C610 912 719 870 798 793" fill="none" stroke="url(#cortexGradient)" stroke-width="92" stroke-linecap="round"/>
-  <path d="M748 332L596 442L748 558L596 668" fill="none" stroke="#F8FAFC" stroke-opacity="0.96" stroke-width="38" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M596 442L489 365M596 668L489 745M489 365L388 365M489 745L388 745" fill="none" stroke="#F8FAFC" stroke-opacity="0.96" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/>
-  <g fill="#F8FAFC" stroke="#312E81" stroke-width="18">
-    <circle cx="748" cy="332" r="28"/><circle cx="748" cy="558" r="28"/><circle cx="596" cy="442" r="28"/><circle cx="596" cy="668" r="28"/>
-    <circle cx="489" cy="365" r="24"/><circle cx="489" cy="745" r="24"/><circle cx="388" cy="365" r="24"/><circle cx="388" cy="745" r="24"/>
-  </g>
+  <rect x="96" y="96" width="370" height="370" rx="58" fill="url(#panelA)"/>
+  <rect x="558" y="96" width="370" height="370" rx="58" fill="url(#panelB)"/>
+  <rect x="96" y="558" width="370" height="370" rx="58" fill="url(#panelC)"/>
+  <rect x="558" y="558" width="370" height="370" rx="58" fill="url(#panelD)"/>
+  <path d="M512 388V636" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="28" stroke-linecap="round"/>
+  <path d="M388 512H636" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="28" stroke-linecap="round"/>
+  <circle cx="512" cy="512" r="34" fill="#FFFFFF"/>
 </svg>
