@@ -1,13 +1,11 @@
 # Cortex.dev branding
 
-The current Cortex.dev mark is an original four-panel grid inspired by the clarity of classic software-platform logos. It is not the Microsoft logo and is not intended to imitate or imply affiliation with Microsoft or Visual Studio Code.
+The current Cortex.dev mark is a direct visual adaptation of the user-provided `Retain_light.svg` / `Retain_dark.svg` asset. The supplied geometry is retained while the brand name and color treatment are changed for Cortex.dev.
 
-Design direction:
-- four rounded panels for the four parts of the Cortex development workflow: understand, build, test, ship;
-- cyan, blue, indigo and violet palette for intelligence, code and creativity;
-- white cross and center point to suggest connection and orchestration;
-- separate mark and horizontal lockup for app icons, website headers and documentation.
+The source asset remains the property of its original creator. This adaptation should be reviewed for permission and licensing before public commercial distribution.
 
 Files:
-- `cortex-mark.svg`: standalone app/icon mark with transparent background.
-- `cortex-lockup.svg`: horizontal mark and wordmark.
+- `cortex-mark.svg`: light-background gradient variant.
+- `cortex-mark-light.svg`: alias of the light variant.
+- `cortex-mark-dark.svg`: white variant for dark backgrounds.
+- `cortex-lockup.svg`: symbol plus Cortex.dev wordmark.
