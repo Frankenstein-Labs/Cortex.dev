@@ -38,7 +38,7 @@ import ChatRow from "./ChatRow"
 import ChatTextArea from "./ChatTextArea"
 import TaskHeader from "./TaskHeader"
 import AutoApproveMenu from "./AutoApproveMenu"
-import splashIcon from "../../../../assets/icons/pearai-agent-splash.svg"
+import splashIcon from "../../../../assets/icons/cortex-agent-splash.svg"
 import { Button } from "../ui/button-pear-scn"
 import {
 	vscBackground,

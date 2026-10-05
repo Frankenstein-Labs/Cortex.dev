@@ -59,11 +59,11 @@ else {
 	if (Object.keys(product).length === 0) {
 		Object.assign(product, {
 			version: '1.95.0-dev',
-			nameShort: 'PearAI Dev',
-			nameLong: 'PearAI Dev',
-			applicationName: 'pearai',
-			dataFolderName: '.pearai',
-			urlProtocol: 'pearai',
+			nameShort: 'Cortex Dev',
+			nameLong: 'Cortex.dev Dev',
+			applicationName: 'cortex-dev',
+			dataFolderName: '.cortex',
+			urlProtocol: 'cortex',
 			reportIssueUrl: 'https://github.com/microsoft/vscode/issues/new',
 			licenseName: 'MIT',
 			licenseUrl: 'https://github.com/microsoft/vscode/blob/main/LICENSE.txt',
