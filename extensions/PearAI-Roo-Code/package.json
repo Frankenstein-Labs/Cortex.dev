@@ -14,7 +14,7 @@
 		"node": "20.18.1"
 	},
 	"author": {
-		"name": "PearAI"
+		"name": "Cortex.dev"
 	},
 	"repository": {
 		"type": "git",
@@ -65,7 +65,7 @@
 			"auxiliarybar": [
 				{
 					"id": "pearai-roo-cline",
-					"title": "PearAI Agent",
+					"title": "Cortex Agent",
 					"icon": "assets/icons/cortex.png"
 				}
 			]
