@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 520" role="img" aria-labelledby="title desc">
+  <title id="title">Cortex.dev</title>
+  <desc id="desc">Cortex.dev logo with a geometric neural C mark and wordmark.</desc>
+  <defs>
+    <linearGradient id="cortexGradient" x1="80" y1="40" x2="420" y2="470" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#22D3EE"/><stop offset="0.48" stop-color="#6366F1"/><stop offset="1" stop-color="#A855F7"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(24 24) scale(.46)">
+    <path d="M790 230C704 151 588 110 470 119C276 134 125 289 111 483C94 707 270 897 491 907C610 912 719 870 798 793" fill="none" stroke="url(#cortexGradient)" stroke-width="92" stroke-linecap="round"/>
+    <path d="M748 332L596 442L748 558L596 668M596 442L489 365M596 668L489 745M489 365L388 365M489 745L388 745" fill="none" stroke="#312E81" stroke-width="38" stroke-linecap="round" stroke-linejoin="round"/>
+    <g fill="#F8FAFC" stroke="#312E81" stroke-width="18"><circle cx="748" cy="332" r="28"/><circle cx="748" cy="558" r="28"/><circle cx="596" cy="442" r="28"/><circle cx="596" cy="668" r="28"/><circle cx="489" cy="365" r="24"/><circle cx="489" cy="745" r="24"/><circle cx="388" cy="365" r="24"/><circle cx="388" cy="745" r="24"/></g>
+  </g>
+  <text x="470" y="337" fill="#111827" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="190" font-weight="750" letter-spacing="-8">Cortex<tspan fill="#6366F1" font-weight="500">.dev</tspan></text>
+</svg>
