@@ -1,0 +1,53 @@
+name: Distribution checks
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  distribution:
+    name: Marketplace config and packaging scripts
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+      - name: Validate product and marketplace configuration
+        run: node scripts/cortex/validate-distribution.mjs
+      - name: Check shell script syntax
+        run: bash -n scripts/cortex/install-dependencies.sh scripts/cortex/setup-environment.sh scripts/cortex/package.sh
+  powershell:
+    name: Windows packaging script syntax
+    runs-on: windows-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Parse PowerShell packaging scripts
+        shell: pwsh
+        run: |
+          $files = @(
+            'scripts/cortex/setup-environment.ps1',
+            'scripts/cortex/build.ps1'
+          )
+          foreach ($file in $files) {
+            $tokens = $null
+            $parseErrors = $null
+            [System.Management.Automation.Language.Parser]::ParseFile(
+              (Join-Path $PWD $file),
+              [ref]$tokens,
+              [ref]$parseErrors
+            ) | Out-Null
+            if ($parseErrors) {
+              $parseErrors | Format-List | Out-String | Write-Error
+              exit 1
+            }
+          }
+          Write-Host 'PowerShell packaging scripts parse successfully.'

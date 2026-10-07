@@ -1,33 +1,37 @@
 #!/usr/bin/env bash
+set -Eeuo pipefail
 
-# Function to execute a command and check its status
-execute() {
-	local cmd=$1
-	local failure_message=$2
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+ROOT_DIR="$(cd -- "$SCRIPT_DIR/../.." && pwd)"
+AGENT_DIR="$ROOT_DIR/extensions/Cortex-Agent"
 
-	$cmd
-	if [ $? -ne 0 ]; then
-		echo "Setup | $failure_message"
-		exit 1
-	fi
-}
+for tool in node npm yarn; do
+  if ! command -v "$tool" >/dev/null 2>&1; then
+    printf 'Required tool not found: %s\n' "$tool" >&2
+    exit 1
+  fi
+done
 
-# Define the submodule directory
-submodule_dir="extensions/pearai-submodule"
+for lock_file in \
+  "$ROOT_DIR/package-lock.json" \
+  "$AGENT_DIR/package-lock.json" \
+  "$AGENT_DIR/webview-ui/package-lock.json" \
+  "$AGENT_DIR/e2e/package-lock.json"; do
+  if [[ ! -f "$lock_file" ]]; then
+    printf 'Required lockfile not found: %s\n' "$lock_file" >&2
+    exit 1
+  fi
+done
 
-# Change to the submodule directory and install dependencies
-execute "cd $submodule_dir" "Failed to change directory to $submodule_dir"
-execute "./scripts/install-and-build.sh" "Failed to install dependencies for the submodule"
-execute "cd ../../" "Failed to change back to the root directory"
+printf '\nInstalling Cortex.dev dependencies with npm ci...\n'
+npm ci --prefix "$ROOT_DIR"
 
-# Define the Cortex-Agent directory
-roo_dir="extensions/Cortex-Agent"
-execute "cd $roo_dir" "Failed to change directory to $roo_dir"
-execute "npm run install:all" "Failed to install dependencies for the submodule"
-execute "npm run build" "Failed to change back to the root directory"
+printf '\nInstalling Cortex Agent dependencies with npm ci...\n'
+npm ci --prefix "$AGENT_DIR"
+npm ci --prefix "$AGENT_DIR/webview-ui"
+npm ci --prefix "$AGENT_DIR/e2e"
 
-# Install dependencies using npm
-execute "npm install" "Failed to install dependencies with npm"
+printf '\nBuilding the bundled Cortex Agent extension...\n'
+npm --prefix "$AGENT_DIR" run build
 
-# Success message
-echo "Dependencies Installed Completed Successfully! ⭐"
+printf '\nDependency installation and Cortex Agent build completed.\n'

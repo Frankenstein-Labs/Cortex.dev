@@ -38,7 +38,9 @@
 	"extensionsGallery": {
 		"serviceUrl": "https://open-vsx.org/vscode/gallery",
 		"itemUrl": "https://open-vsx.org/vscode/item",
-		"resourceUrlTemplate": "https://open-vsx.org/vscode/asset/{publisher}/{name}/{version}/Microsoft.VisualStudio.Code.WebResources/{path}"
+		"publisherUrl": "https://open-vsx.org/namespace",
+		"resourceUrlTemplate": "https://open-vsx.org/vscode/unpkg/{publisher}/{name}/{version}/{path}",
+		"extensionUrlTemplate": "https://open-vsx.org/vscode/gallery/{publisher}/{name}/latest"
 	},
 	"profileTemplatesUrl": "https://az764295.vo.msecnd.net/profile-templates/profile-templates.json",
 	"extensionRecommendations": {
@@ -2146,6 +2148,7 @@
 	},
 	"linkProtectionTrustedDomains": [
 		"https://github.com/Frankenstein-Labs/Cortex.dev",
+		"https://open-vsx.org",
 		"https://*.visualstudio.com",
 		"https://*.microsoft.com",
 		"https://aka.ms",

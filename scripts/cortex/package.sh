@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
+set -Eeuo pipefail
 
-# Install dependencies for the submodule
-./install-dependencies.sh
-if [ $? -ne 0 ]; then
-  echo "Failed to install dependencies"
-  echo "Packaging did not succeed."
-  exit 1
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+ROOT_DIR="$(cd -- "$SCRIPT_DIR/../.." && pwd)"
+
+if (($# == 0)); then
+  echo 'Usage: scripts/cortex/package.sh <gulp-task> [gulp-task ...]' >&2
+  echo 'Example: scripts/cortex/package.sh vscode-linux-x64-min' >&2
+  exit 2
 fi
 
-# Run yarn gulp with input arguments
-yarn gulp {input} "$1"
-if [ $? -ne 0 ]; then
-  echo "Failed to run yarn gulp"
-  echo "Packaging did not succeed."
-  exit 1
+if [[ ! -d "$ROOT_DIR/node_modules" || ! -d "$ROOT_DIR/extensions/Cortex-Agent/node_modules" || ! -d "$ROOT_DIR/extensions/Cortex-Agent/webview-ui/node_modules" ]]; then
+  "$SCRIPT_DIR/install-dependencies.sh"
+else
+  npm --prefix "$ROOT_DIR/extensions/Cortex-Agent" run build
 fi
 
-# Success message
-echo "Packaging Completed Successfully! ⭐"
+cd "$ROOT_DIR"
+yarn gulp "$@"

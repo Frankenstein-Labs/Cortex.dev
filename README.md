@@ -15,12 +15,22 @@ The editor remains compatible with the existing PearAI service endpoints and leg
 ## Development
 
 ```bash
-npm install
 ./scripts/cortex/setup-environment.sh
 npm run watch
 ```
 
 See [`CONTRIBUTING.md`](CONTRIBUTING.md) for platform-specific setup and the extension development workflow.
+
+## Packaging
+
+The setup scripts use the committed lockfiles, build the bundled Cortex Agent, and preserve the working tree. On macOS or Linux, run:
+
+```bash
+./scripts/cortex/setup-environment.sh
+./scripts/cortex/package.sh vscode-linux-x64-min
+```
+
+Pass the Gulp packaging task for the target platform to `package.sh`; on Windows, run `scripts/cortex/setup-environment.ps1` and then invoke the matching task with `yarn gulp <task>` from the repository root. The editor extension gallery is configured to use [Open VSX](https://open-vsx.org/).
 
 ## Credits and licensing
 
