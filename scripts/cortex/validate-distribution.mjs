@@ -14,6 +14,12 @@ const packageJson = JSON.parse(packageText);
 const gallery = product.extensionsGallery;
 
 assert.equal(product.version, packageJson.version, 'product.json and package.json versions must match.');
+assert.equal(
+  product.downloadUrl,
+  'https://github.com/Frankenstein-Labs/Cortex.dev/releases',
+  'Manual downloads must point to the Cortex.dev GitHub Releases page.',
+);
+assert.ok(!product.updateUrl, 'The legacy in-app update feed must remain disabled until Cortex.dev has its own service.');
 assert.ok(gallery, 'product.json must configure an extension gallery.');
 assert.equal(gallery.serviceUrl, 'https://open-vsx.org/vscode/gallery');
 assert.equal(gallery.itemUrl, 'https://open-vsx.org/vscode/item');
@@ -36,4 +42,4 @@ assert.ok(
   'Open VSX must be a trusted link-protection domain.',
 );
 
-console.log(`Distribution configuration is valid (Cortex.dev ${packageJson.version}; Open VSX).`);
+console.log(`Distribution configuration is valid (Cortex.dev ${packageJson.version}; Open VSX; manual GitHub Releases).`);

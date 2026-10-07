@@ -21,6 +21,10 @@ npm run watch
 
 See [`CONTRIBUTING.md`](CONTRIBUTING.md) for platform-specific setup and the extension development workflow.
 
+## Releases and updates
+
+Download published builds from [GitHub Releases](https://github.com/Frankenstein-Labs/Cortex.dev/releases) and install them manually. In-app automatic updates are intentionally disabled until Cortex.dev has its own update service. The repository is currently private, so releases are accessible only to users with repository access.
+
 ## Packaging
 
 The setup scripts use the committed lockfiles, build the bundled Cortex Agent, and preserve the working tree. On macOS or Linux, run:
