@@ -12,14 +12,14 @@
 - [🐛 Creating Issues](#-creating-issues)
 - [⚙️ Packaging](#-packaging)
 
-Welcome to the Cortex.dev app! Cortex.dev is a fork of VSCode (and Continue), with most of the functionality in `extension/pearai-submodule`. Follow the guide below to contribute effectively and have fun while doing it! 😄
+Welcome to Cortex.dev, our independent desktop code editor with the Cortex Agent built in. Follow the guide below to contribute effectively.
 
 ## 🚀 Getting Started
 
-After cloning and building the repo, check out our [issues list](https://github.com/trypear/Cortex.dev/issues). For first-time contributors, issues labeled [`good first issue`](https://github.com/trypear/Cortex.dev/issues?q=is%3Aissue+is%3Aopen+label%3A%22Good+First+Issue%22) are great starting points. If you're contributing significant changes, or if the issue is already assigned to a specific milestone, please discuss with the assignee first on [Discord](https://discord.gg/7QMraJUsQt).
+After cloning and building the repo, check out the [Cortex.dev issues list](https://github.com/Frankenstein-Labs/Cortex.dev/issues). For first-time contributors, issues labeled [`good first issue`](https://github.com/Frankenstein-Labs/Cortex.dev/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) are a good starting point.
 
 ### IMPORTANT ‼️
-If you are using mac, you WONT BE able to run the submodule in normal pearai, due to some notarization BS. You have to use a dev version: https://drive.google.com/drive/u/0/folders/13Tnz9cL7AAUuB_eyc5n-4wJQmhN3mPWt
+Use the Node.js version pinned in `.nvmrc` (20.18.0), npm, and Yarn 1. The setup scripts use the checked-in lockfiles and do not update or remove source directories.
 
 ## 🛠 Prerequisites
 
@@ -43,7 +43,7 @@ Ensure you have the following tools installed:
 
 ### 1️⃣ Fork and Clone
 
-1. Go to the [Cortex.dev repository](https://github.com/trypear/Cortex.dev.git).
+1. Go to the [Cortex.dev repository](https://github.com/Frankenstein-Labs/Cortex.dev.git).
 2. Click on the "Fork" button at the top right of the page to create a copy of the repository under your own GitHub account.
 3. Once forked, clone the repository to your local machine using the following command in your terminal:
 
@@ -72,7 +72,7 @@ To rebuild the app after initial setup:
   ```
 - **Windows**:
   ```bat
-  yarn
+  .\scripts\cortex\setup-environment.ps1
   ```
 
 # Cortex.dev Development Setup Guide
@@ -81,9 +81,8 @@ To rebuild the app after initial setup:
 
 Cortex.dev consists of several components:
 
-- **[Cortex.dev](https://github.com/trypear/Cortex.dev)**: VSCode fork and parent repository for Cortex.dev. Most contributions will NOT end up here.
-- **[./extensions/pearai-submodule](the bundled Cortex Agent integration)**: Nearly all of Cortex.dev's functionality, packaged as a built-in VSCode/Cortex.dev extension. It is a fork of Continue, and is a git submodule of Cortex.dev. **Most contributions will end up here!**
-- **[./extensions/Cortex-Agent](https://github.com/trypear/Cortex-Agent)**: A Roo extension for Cortex.dev.
+- **[Cortex.dev](https://github.com/Frankenstein-Labs/Cortex.dev)**: Cortex.dev desktop editor and cross-platform build configuration.
+- **[./extensions/Cortex-Agent](./extensions/Cortex-Agent)**: Bundled Cortex Agent extension and its webview/e2e projects.
 
 ## Setup Instructions
 
@@ -119,14 +118,12 @@ Cortex.dev consists of several components:
 
    > **Note**: Windows requires running `code.bat` for the first run to create the necessary symlinks. For subsequent runs, the symlinks will already exist, allowing you to use the faster `code.sh` script through Git Bash.
 
-### 2. Cortex.dev Submodule / Extensions
+### 2. Cortex Agent Extension
 
-1. Open the directory `extensions/pearai-submodule` in Cortex.dev Dev or VSCode.
+1. Open `extensions/Cortex-Agent` in Cortex.dev Dev or VS Code.
 2. Configure your development environment:
    - Update the paths in `.vscode/launch.json` to point to the correct locations for other Cortex.dev Extensions.
-3. Install dependencies and build:
-   - Open the command palette (`Cmd/Ctrl+Shift+P`).
-   - Select `Tasks: Run Task` and then `install-and-build`.
+3. Install dependencies with `npm ci` in `extensions/Cortex-Agent`, then build the extension with `npm run build`.
 4. Start debugging:
    - Switch to Run and Debug view.
    - Select `Extension (VS Code)` from the dropdown.
@@ -168,22 +165,6 @@ Cortex.dev consists of several components:
    - Select `Developer: Open Webview Developer Tools`.
 7. Make text changes to see them reflected in the Cortex.dev window.
 
-#### B) From pearai-submodule (for changes to both components)
-
-If you want to develop both pearai-submodule and Cortex-Agent simultaneously:
-
-1. Update the paths in `pearai-submodule/.vscode/launch.json` to point to the correct locations for Cortex.dev Roo Code.
-2. Follow the steps to run Extension Development Host in Cortex.dev submodule (Section 2 above).
-3. In Cortex-Agent directory, run:
-   ```
-   npm run watch
-   ```
-4. In another terminal, run:
-   ```
-   npm run dev
-   ```
-   This will start Cortex-Agent on port 5174, which the extension development host will connect to.
-5. Make text changes to see them reflected in the Cortex.dev sidebar.
 
 ## 🪳 Debugging environment issues
 
@@ -240,26 +221,17 @@ These `gulp` tasks are available:
 
 This will generate the new Cortex.dev app and takes around 1 hour.
 
-### Step 2: Package Cortex.dev Extension
+### Step 2: Package Cortex.dev
 
-`pearai-submodule` also needs to be packaged and integrated into the overall Cortex.dev app.
+The setup script installs locked dependencies and builds `extensions/Cortex-Agent`. Package the desktop editor by invoking the Gulp packaging task for the target platform, for example:
 
-1. `cd` into `extensions/pearai-submodule`.
-2. Run `./scripts/install-and-build.sh`.
-3. `cd` into `extensions/vscode` (Full path is now `extensions/pearai-submodule/extensions/vscode/`).
-4. Run `npm run package`.
-5. This will create the `.vsix` extension within `extensions/pearai-submodule/extensions/vscode/build`.
-6. Right-click the `.vsix` in VSCode or Cortex.dev and select `Install vsix as Extension`.
+```bash
+./scripts/cortex/package.sh vscode-linux-x64-min
+```
 
-### Step 3: Integrate the Extension
+The script accepts one or more Gulp task names and can be run from any working directory. On Windows, use `scripts/cortex/setup-environment.ps1` first, then run the equivalent Gulp task with `yarn gulp <task>` from the repository root.
 
-1. Copy the generated `pearai.pearai-1.x.x` folder under `~/.vscode/extensions` to the `extensions` folder of the packaged Cortex.dev App (right click on packaged app -> Show Package Contents).
-2. Delete any existing `pearai-submodule` folder in the `extensions/` folder of the packaged Cortex.dev app.
-3. Double-click your overall Cortex.dev app, and the extension should be built-in.
- - On MacOS for example (Using VScode for .vsix installation)
-   1. `cp -r ~/.vscode/extensions/pearai.pearai-{PEARAI_VERSION} {PATH_TO_Cortex.dev.app}/Contents/Resources/app/extension`
-   2. `rm -rf {PATH_TO_Cortex.dev.app}/Contents/Resources/app/extensions/pearai-submodule `
-   3. Double-click your overall Cortex.dev app, and the extension should be built-in.
+To build the Cortex Agent VSIX separately for development, run `npm --prefix extensions/Cortex-Agent run package`; the artifact is written under `extensions/Cortex-Agent/bin`.
 
 
 ### Step 4: Signing and Turn Into Installer

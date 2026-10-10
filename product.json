@@ -14,8 +14,7 @@
 	"serverApplicationName": "code-server",
 	"serverDataFolderName": ".cortex-server",
 	"tunnelApplicationName": "code-tunnel",
-	"downloadUrl": "https://github.com/Frankenstein-Labs/Cortex.dev",
-	"updateUrl": "https://updates.trypear.ai/pearai-backup-server-api",
+	"downloadUrl": "https://github.com/Frankenstein-Labs/Cortex.dev/releases",
 	"win32DirName": "Cortex",
 	"win32NameVersion": "Cortex",
 	"win32RegValueName": "Cortex",
@@ -36,12 +35,11 @@
 	"quality": "stable",
 	"webviewContentExternalBaseUrlTemplate": "https://{{uuid}}.vscode-cdn.net/insider/ef65ac1ba57f57f2a3961bfe94aa20481caca4c6/out/vs/workbench/contrib/webview/browser/pre/",
 	"extensionsGallery": {
-		"nlsBaseUrl": "https://www.vscode-unpkg.net/_lp/",
-		"serviceUrl": "https://market.trypear.ai/gallery",
-		"itemUrl": "https://market.trypear.ai/items",
-		"publisherUrl": "https://market.trypear.ai/publishers",
-		"resourceUrlTemplate": "https://{publisher}.vscode-unpkg.net/{publisher}/{name}/{version}/{path}",
-		"controlUrl": "https://az764295.vo.msecnd.net/extensions/marketplace.json"
+		"serviceUrl": "https://open-vsx.org/vscode/gallery",
+		"itemUrl": "https://open-vsx.org/vscode/item",
+		"publisherUrl": "https://open-vsx.org/namespace",
+		"resourceUrlTemplate": "https://open-vsx.org/vscode/unpkg/{publisher}/{name}/{version}/{path}",
+		"extensionUrlTemplate": "https://open-vsx.org/vscode/gallery/{publisher}/{name}/latest"
 	},
 	"profileTemplatesUrl": "https://az764295.vo.msecnd.net/profile-templates/profile-templates.json",
 	"extensionRecommendations": {
@@ -2149,6 +2147,7 @@
 	},
 	"linkProtectionTrustedDomains": [
 		"https://github.com/Frankenstein-Labs/Cortex.dev",
+		"https://open-vsx.org",
 		"https://*.visualstudio.com",
 		"https://*.microsoft.com",
 		"https://aka.ms",
