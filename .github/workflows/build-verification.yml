@@ -25,7 +25,7 @@ jobs:
 
       - name: Cache node modules
         id: cache-node-modules
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
@@ -33,7 +33,7 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Cache Yarn dependencies
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ~/.cache/yarn
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
@@ -110,7 +110,7 @@ jobs:
 
       - name: Cache node modules
         id: cacheNodeModules
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: "**/node_modules"
           key: ${{ runner.os }}-cacheNodeModulesLinux-${{ steps.nodeModulesCacheKey.outputs.value }}
@@ -123,7 +123,7 @@ jobs:
 
       - name: Cache yarn directory
         if: ${{ steps.cacheNodeModules.outputs.cache-hit != 'true' }}
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ${{ steps.yarnCacheDirPath.outputs.dir }}
           key: ${{ runner.os }}-yarnCacheDir-${{ steps.nodeModulesCacheKey.outputs.value }}
@@ -273,14 +273,14 @@ jobs:
           echo "yarn_cache_dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
 
       - name: Cache node_modules
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         id: cache-node-modules
         with:
           path: "**/node_modules"
           key: ${{ runner.os }}-node-modules-${{ steps.cache-keys.outputs.node_modules_key }}
 
       - name: Cache Yarn directory
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         with:
           path: ${{ steps.cache-keys.outputs.yarn_cache_dir }}
