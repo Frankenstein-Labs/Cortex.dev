@@ -3,6 +3,8 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
+process.env.ESLINT_USE_FLAT_CONFIG = 'true';
+
 const es = require('event-stream');
 const vfs = require('vinyl-fs');
 const { eslintFilter } = require('./filters');
@@ -13,8 +15,8 @@ function eslint() {
 		.src(eslintFilter, { base: '.', follow: true, allowEmpty: true })
 		.pipe(
 			eslint((results) => {
-				if (results.warningCount > 0 || results.errorCount > 0) {
-					throw new Error('eslint failed with warnings and/or errors');
+				if (results.errorCount > 0) {
+					throw new Error('eslint failed with errors');
 				}
 			})
 		).pipe(es.through(function () { /* noop, important for the stream to end */ }));

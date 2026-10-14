@@ -5,7 +5,7 @@
 
 'use strict';
 
-const { ESLint } = require('eslint');
+const { FlatESLint: ESLint } = require('eslint/use-at-your-own-risk');
 const { Transform } = require('stream');
 const { relative } = require('path');
 const fancyLog = require('fancy-log');
@@ -43,7 +43,7 @@ function eslint(action) {
 					return;
 				}
 
-				const result = (await linter.lintText(file.contents.toString(), { filePath }))[0];
+				const result = (await linter.lintText(file.contents.toString(), { filePath: file.path }))[0];
 				results.push(result);
 				results.errorCount += result.errorCount;
 				results.warningCount += result.warningCount;

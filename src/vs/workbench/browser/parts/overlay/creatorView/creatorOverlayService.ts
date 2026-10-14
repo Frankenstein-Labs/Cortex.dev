@@ -1,4 +1,7 @@
-/* eslint-disable header/header */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
 
 import {
 	registerSingleton,
@@ -72,8 +75,7 @@ export interface ICreatorOverlayService extends IDisposable {
 
 export class CreatorOverlayService
 	extends Disposable
-	implements ICreatorOverlayService
-{
+	implements ICreatorOverlayService {
 	declare readonly _serviceBrand: undefined;
 
 	private readonly _creatorOverlayPart: CreatorOverlayPart;
