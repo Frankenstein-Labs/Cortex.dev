@@ -23,8 +23,7 @@ export interface IShadowOverlayService extends IDisposable {
 
 export class ShadowOverlayService
 	extends Disposable
-	implements IShadowOverlayService
-{
+	implements IShadowOverlayService {
 	declare readonly _serviceBrand: undefined;
 	private highlightedElements: Map<
 		string,

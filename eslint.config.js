@@ -753,10 +753,6 @@ export default tseslint.config(
 					'paths': [
 						{
 							'name': 'electron',
-							'allowImportNames': [
-								'net',
-								'system-preferences',
-							],
 							'message': 'Only net and system-preferences are allowed to be imported from electron'
 						}
 					]
@@ -1418,10 +1414,8 @@ export default tseslint.config(
 		languageOptions: {
 			parser: tseslint.parser,
 			parserOptions: {
-				project: [
-					'extensions/typescript-language-features/tsconfig.json',
-					'extensions/typescript-language-features/web/tsconfig.json'
-				],
+				projectService: true,
+				tsconfigRootDir: __dirname,
 			}
 		},
 		plugins: {

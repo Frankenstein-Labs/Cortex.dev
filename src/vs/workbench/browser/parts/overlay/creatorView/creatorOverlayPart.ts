@@ -1,5 +1,9 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
 /* eslint-disable local/code-no-unexternalized-strings */
-/* eslint-disable header/header */
 
 import { Part } from "../../../../../workbench/browser/part.js";
 import {
@@ -547,7 +551,9 @@ export class CreatorOverlayPart extends Part {
 
 			// Wait briefly for a response + send another ping if it was lost
 			for (let i = 0; i < 100; i++) {
-				if (messageReceived) break;
+				if (messageReceived) {
+					break;
+				}
 				this.webviewElement.postMessage({ messageType: "ping" });
 				await new Promise((resolve) => setTimeout(resolve, 5));
 			}
