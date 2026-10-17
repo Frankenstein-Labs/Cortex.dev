@@ -433,6 +433,8 @@ export const enum SearchStrategy {
 
 export type SourceLocationMapper = (line: number, col: number, strategy: SearchStrategy) => vscode.Location | undefined;
 
+type TraceMapDecodedSegment = [number] | [number, number, number, number] | [number, number, number, number, number];
+
 export class SourceMapStore {
 	private readonly cache = new Map</* file uri */ string, Promise<TraceMap | undefined>>();
 
@@ -463,14 +465,14 @@ export class SourceMapStore {
 
 			do {
 				line += strategy;
-				const segments = decoded[line];
+				const segments = decoded[line] as TraceMapDecodedSegment[] | undefined;
 				if (!segments?.length) {
 					continue;
 				}
 
 				const index = strategy === SearchStrategy.FirstBefore
-					? findLastIndex(segments, s => s.length !== 1)
-					: segments.findIndex(s => s.length !== 1);
+					? findLastIndex(segments, (s: TraceMapDecodedSegment) => s.length !== 1)
+					: segments.findIndex((s: TraceMapDecodedSegment) => s.length !== 1);
 				const segment = segments[index];
 
 				if (!segment || segment.length === 1) {
