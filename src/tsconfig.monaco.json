@@ -5,7 +5,8 @@
 		"types": [
 			"@webgpu/types",
 			"trusted-types",
-			"wicg-file-system-access"
+			"wicg-file-system-access",
+			"node"
 		],
 		"paths": {},
 		"module": "amd",
