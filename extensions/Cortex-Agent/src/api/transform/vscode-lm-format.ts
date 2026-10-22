@@ -70,14 +70,14 @@ export function convertToVsCodeLmMessages(
 						const toolContentParts: vscode.LanguageModelTextPart[] =
 							typeof toolMessage.content === "string"
 								? [new vscode.LanguageModelTextPart(toolMessage.content)]
-								: (toolMessage.content?.map((part) => {
+								: toolMessage.content?.map((part) => {
 										if (part.type === "image") {
 											return new vscode.LanguageModelTextPart(
 												`[Image (${part.source?.type || "Unknown source-type"}): ${part.source?.media_type || "unknown media-type"} not supported by VSCode LM API]`,
 											)
 										}
 										return new vscode.LanguageModelTextPart(part.text)
-									}) ?? [new vscode.LanguageModelTextPart("")])
+									}) ?? [new vscode.LanguageModelTextPart("")]
 
 						return new vscode.LanguageModelToolResultPart(toolMessage.tool_use_id, toolContentParts)
 					}),

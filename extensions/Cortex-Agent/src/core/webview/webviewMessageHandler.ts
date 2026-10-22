@@ -140,7 +140,7 @@ export const webviewMessageHandler = async (provider: ClineProvider, message: We
 			// initializing new instance of Cline will make sure that any agentically running promises in old instance don't affect our new task. this essentially creates a fresh slate for the new task
 			const existingCline = provider.getCurrentCline()
 			const creatorModeConfig = existingCline?.creatorModeConfig
-			
+
 			await provider.initClineWithTask(message.text, message.images, undefined, {}, creatorModeConfig)
 			break
 		case "apiConfiguration":
@@ -1275,12 +1275,11 @@ export const webviewMessageHandler = async (provider: ClineProvider, message: We
 			)
 			break
 		case "openPearAICreatorFeedbackOverlay":
-			const pearAIExports = await getpearAIExports();
-			const currentCline = provider.getCurrentCline();
-			
-			
+			const pearAIExports = await getpearAIExports()
+			const currentCline = provider.getCurrentCline()
+
 			// Open the feedback form with the chat history
-			pearAIExports.pearAPI.creatorMode.openFeedbackForm(currentCline?.clineMessages || []);
+			pearAIExports.pearAPI.creatorMode.openFeedbackForm(currentCline?.clineMessages || [])
 			break
 	}
 }
