@@ -50,7 +50,9 @@ export class PostHogClient {
 		this.pearaiId = this.vscMachineId // Initialize with machine ID as fallback
 		this.telemetryEnabled = true
 		this.providerRef = null
-		this.client = new PostHog('phc_EixCfQZYA5It6ZjtZG2C8THsUQzPzXZsdCsvR8AYhfh', { host: "https://us.i.posthog.com" })
+		this.client = new PostHog("phc_EixCfQZYA5It6ZjtZG2C8THsUQzPzXZsdCsvR8AYhfh", {
+			host: "https://us.i.posthog.com",
+		})
 
 		// getting the pearai id from the submodule
 		void this.initializePearAIId()
@@ -65,9 +67,9 @@ export class PostHogClient {
 				this.client.identify({
 					distinctId: this.vscMachineId,
 					properties: {
-						pearAiId: this.pearaiId, 
-					}
-				});
+						pearAiId: this.pearaiId,
+					},
+				})
 				this.client.alias({
 					distinctId: this.vscMachineId,
 					alias: this.pearaiId,
@@ -92,7 +94,7 @@ export class PostHogClient {
 
 		// We only enable telemetry if global vscode telemetry is enabled
 		// if (globalTelemetryEnabled) {
-			// this.telemetryEnabled = didUserOptIn
+		// this.telemetryEnabled = didUserOptIn
 		// }
 
 		// Update PostHog client state based on telemetry preference

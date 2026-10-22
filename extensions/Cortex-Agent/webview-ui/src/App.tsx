@@ -26,8 +26,17 @@ const tabsByMessageAction: Partial<Record<NonNullable<ExtensionMessage["action"]
 }
 
 const App = () => {
-	const { didHydrateState, showWelcome, shouldShowAnnouncement, telemetrySetting, telemetryKey, machineId, creatorModeConfig, mode, setMode} =
-		useExtensionState()
+	const {
+		didHydrateState,
+		showWelcome,
+		shouldShowAnnouncement,
+		telemetrySetting,
+		telemetryKey,
+		machineId,
+		creatorModeConfig,
+		mode,
+		setMode,
+	} = useExtensionState()
 
 	const [showAnnouncement, setShowAnnouncement] = useState(false)
 	const [tab, setTab] = useState<Tab>("chat")
@@ -50,11 +59,11 @@ const App = () => {
 		if (creatorModeConfig && !creatorModeConfig.creatorMode) {
 			if (typeof mode === "string" && mode.toLowerCase().includes("pearai")) {
 				let mode = "code"
-				setMode(mode);
+				setMode(mode)
 				vscode.postMessage({ type: "mode", text: "code" })
 			}
 		}
-	}, [mode, setMode, chatViewRef, creatorModeConfig]);
+	}, [mode, setMode, chatViewRef, creatorModeConfig])
 
 	const switchTab = useCallback((newTab: Tab) => {
 		setCurrentSection(undefined)
