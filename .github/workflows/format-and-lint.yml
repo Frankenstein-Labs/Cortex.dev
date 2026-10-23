@@ -27,7 +27,7 @@ jobs:
         run: npm ci
 
       - name: Run Prettier
-        run: yarn prettier --check './extensions/pearai-extension/**/src/**/*.{ts,tsx}'
+        run: npx prettier --check './extensions/Cortex-Agent/src/**/*.{ts,tsx}'
 
       - name: Run ESLint
-        run: yarn eslint './extensions/pearai-extension/**/src/**/*.{ts,tsx}' --quiet
+        run: npm ci --prefix extensions/Cortex-Agent && ESLINT_USE_FLAT_CONFIG=false npx eslint -c extensions/Cortex-Agent/.eslintrc.json 'extensions/Cortex-Agent/src/**/*.ts'

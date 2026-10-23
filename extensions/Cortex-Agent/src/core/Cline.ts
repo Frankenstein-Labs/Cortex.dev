@@ -246,10 +246,10 @@ export class Cline extends EventEmitter<ClineEvents> {
 		})
 
 		this.creatorModeConfig = creatorModeConfig ?? historyItem?.creatorModeConfig ?? { creatorMode: false }
-		
+
 		this.apiConfiguration = {
 			...apiConfiguration,
-			creatorModeConfig: this.creatorModeConfig
+			creatorModeConfig: this.creatorModeConfig,
 		}
 		this.api = buildApiHandler(this.apiConfiguration)
 		this.promptCacheKey = crypto.randomUUID()
