@@ -4,6 +4,7 @@
 		"noEmit": true,
 		"types": [
 			"@webgpu/types",
+			"node",
 			"trusted-types",
 			"wicg-file-system-access"
 		],

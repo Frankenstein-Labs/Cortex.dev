@@ -129,8 +129,18 @@ describe("loadRuleFiles", () => {
 
 		// Simulate listing files
 		readdirMock.mockResolvedValueOnce([
-			{ name: "file1.txt", isFile: () => true, isSymbolicLink: () => false, parentPath: "/fake/path/.pearai-agent/rules" },
-			{ name: "file2.txt", isFile: () => true, isSymbolicLink: () => false, parentPath: "/fake/path/.pearai-agent/rules" },
+			{
+				name: "file1.txt",
+				isFile: () => true,
+				isSymbolicLink: () => false,
+				parentPath: "/fake/path/.pearai-agent/rules",
+			},
+			{
+				name: "file2.txt",
+				isFile: () => true,
+				isSymbolicLink: () => false,
+				parentPath: "/fake/path/.pearai-agent/rules",
+			},
 		] as any)
 
 		statMock.mockImplementation(
@@ -643,7 +653,11 @@ describe("Rules directory reading", () => {
 				},
 			] as any)
 			.mockResolvedValueOnce([
-				{ name: "subdir_link.txt", isFile: () => true, parentPath: "/fake/path/.pearai-agent/rules/symlink-target-dir" },
+				{
+					name: "subdir_link.txt",
+					isFile: () => true,
+					parentPath: "/fake/path/.pearai-agent/rules/symlink-target-dir",
+				},
 			] as any)
 
 		// Simulate readlink response
@@ -716,8 +730,14 @@ describe("Rules directory reading", () => {
 		// Verify both files were read
 		expect(readFileMock).toHaveBeenCalledWith("/fake/path/.pearai-agent/rules/regular.txt", "utf-8")
 		expect(readFileMock).toHaveBeenCalledWith("/fake/path/.pearai-agent/rules/../symlink-target.txt", "utf-8")
-		expect(readFileMock).toHaveBeenCalledWith("/fake/path/.pearai-agent/rules/symlink-target-dir/subdir_link.txt", "utf-8")
-		expect(readFileMock).toHaveBeenCalledWith("/fake/path/.pearai-agent/rules/../nested-symlink-target.txt", "utf-8")
+		expect(readFileMock).toHaveBeenCalledWith(
+			"/fake/path/.pearai-agent/rules/symlink-target-dir/subdir_link.txt",
+			"utf-8",
+		)
+		expect(readFileMock).toHaveBeenCalledWith(
+			"/fake/path/.pearai-agent/rules/../nested-symlink-target.txt",
+			"utf-8",
+		)
 	})
 	beforeEach(() => {
 		jest.clearAllMocks()

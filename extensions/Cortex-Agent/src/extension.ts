@@ -78,7 +78,7 @@ export async function activate(context: vscode.ExtensionContext) {
 	const provider = new ClineProvider(context, outputChannel, "sidebar", contextProxy)
 	telemetryService.setProvider(provider)
 
-	registerPearListener(provider);
+	registerPearListener(provider)
 
 	context.subscriptions.push(
 		vscode.window.registerWebviewViewProvider(ClineProvider.sideBarId, provider, {
