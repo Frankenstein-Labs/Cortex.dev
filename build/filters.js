@@ -26,7 +26,8 @@ module.exports.all = [
 	'!out*/**',
 	'!test/**/out/**',
 	'!**/node_modules/**',
-	'!**/extensions/pearai-extension/**'
+	'!**/extensions/pearai-extension/**',
+	'!**/extensions/Cortex-Agent/**'
 ];
 
 module.exports.unicodeFilter = [
