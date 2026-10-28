@@ -32,6 +32,9 @@ jobs:
           sudo update-rc.d xvfb defaults
           sudo service xvfb start
 
+      - name: Install system dependencies
+        run: sudo apt-get update && sudo apt-get install -y libkrb5-dev libx11-dev libxkbfile-dev libsecret-1-dev
+
       - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
@@ -83,6 +86,9 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v7
+
+      - name: Install system dependencies
+        run: sudo apt-get update && sudo apt-get install -y libkrb5-dev libx11-dev libxkbfile-dev libsecret-1-dev
 
       - uses: actions/setup-node@v7
         with:
@@ -146,6 +152,9 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v7
+
+      - name: Install system dependencies
+        run: sudo apt-get update && sudo apt-get install -y libkrb5-dev libx11-dev libxkbfile-dev libsecret-1-dev
 
       - uses: actions/setup-node@v7
         with:
