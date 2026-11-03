@@ -7,7 +7,9 @@ import { PEARAI_CREATOR_MODE_WEBAPP_MANAGER_SLUG } from "../shared/modes"
 export const getPearaiExtension = async () => {
 	const pearAiExtension = vscode.extensions.getExtension("pearai.pearai")
 
-	assert(!!pearAiExtension, "PearAI extension not found")
+	if (!pearAiExtension) {
+		return undefined
+	}
 
 	if (!pearAiExtension.isActive) {
 		await pearAiExtension.activate()
@@ -20,7 +22,9 @@ export const getPearaiExtension = async () => {
 export const getpearAIExports = async (): Promise<any> => {
 	const pearAiExtension = await getPearaiExtension()
 
-	assert(!!pearAiExtension.exports, "⚠️⚠️ Error, no PearAI Exports could be found :( ⚠️⚠️");
+	if (!pearAiExtension?.exports) {
+		return undefined
+	}
 
 	return pearAiExtension.exports;
 }
@@ -31,6 +35,9 @@ type CreatorModeState = "OVERLAY_CLOSED" | "OVERLAY_OPEN" | "OVERLAY_CLOSED_CREA
 export const registerPearListener = async (provider: ClineProvider) => {
 	// Getting the pear ai extension instance
 	const exports = await getpearAIExports()
+	if (!exports?.pearAPI?.creatorMode) {
+		return
+	}
 	exports.pearAPI.creatorMode.onDidRequestExecutePlan(async (msg: any) => {
 		console.dir(`onDidRequestNewTask triggered with: ${JSON.stringify(msg)}`)
 

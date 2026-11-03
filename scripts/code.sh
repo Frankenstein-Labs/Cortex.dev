@@ -7,7 +7,7 @@ set -e
 # ===========================================================================
 
 # Path to Cortex-Agent extension
-CORTEX_AGENT_PATH="./../Cortex-Agent"
+CORTEX_AGENT_PATH="extensions/Cortex-Agent"
 
 # Path to pearai-submodule vscode extension
 PEARAI_SUBMODULE_PATH="./../pearai-submodule/extensions/vscode"
