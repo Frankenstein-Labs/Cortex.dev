@@ -2,7 +2,7 @@
 	"name": "cortex-agent",
 	"displayName": "Cortex Agent",
 	"description": "Cortex.dev coding agent integration.",
-	"publisher": "Cortex.dev",
+	"publisher": "cortex-dev",
 	"icon": "assets/icons/cortex.png",
 	"version": "3.15.3",
 	"galleryBanner": {
