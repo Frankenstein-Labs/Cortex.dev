@@ -7,7 +7,7 @@ set -e
 # ===========================================================================
 
 # Path to Cortex-Agent extension
-CORTEX_AGENT_PATH="./../Cortex-Agent"
+CORTEX_AGENT_PATH="extensions/Cortex-Agent"
 
 # Path to pearai-submodule vscode extension
 PEARAI_SUBMODULE_PATH="./../pearai-submodule/extensions/vscode"
@@ -38,9 +38,7 @@ else
 fi
 
 # Default paths for extension development - using relative paths from ROOT
-EXTENSION_PATHS=(
-    "${ROOT}/extensions/vscode"
-)
+EXTENSION_PATHS=()
 
 # Add Cortex.dev extensions
 if [[ -d "${ROOT}/${CORTEX_AGENT_PATH}" ]]; then
