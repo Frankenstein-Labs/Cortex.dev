@@ -7,7 +7,7 @@ set -e
 # ===========================================================================
 
 # Path to Cortex-Agent extension
-CORTEX_AGENT_PATH="./../Cortex-Agent"
+CORTEX_AGENT_PATH="extensions/Cortex-Agent"
 
 # Path to pearai-submodule vscode extension
 PEARAI_SUBMODULE_PATH="./../pearai-submodule/extensions/vscode"
@@ -38,21 +38,21 @@ else
 fi
 
 # Default paths for extension development - using relative paths from ROOT
-EXTENSION_PATHS=(
-    "${ROOT}/extensions/vscode"
-)
+EXTENSION_PATHS=()
 
 # Add Cortex.dev extensions
 if [[ -d "${ROOT}/${CORTEX_AGENT_PATH}" ]]; then
     EXTENSION_PATHS+=("${ROOT}/${CORTEX_AGENT_PATH}")
+elif [[ -d "${CORTEX_AGENT_PATH}" ]]; then
+    EXTENSION_PATHS+=("${CORTEX_AGENT_PATH}")
 else
     echo "Warning: Cortex-Agent extension path not found at ${ROOT}/${CORTEX_AGENT_PATH}"
 fi
 
 if [[ -d "${ROOT}/${PEARAI_SUBMODULE_PATH}" ]]; then
     EXTENSION_PATHS+=("${ROOT}/${PEARAI_SUBMODULE_PATH}")
-else
-    echo "Warning: Cortex.dev submodule vscode extension path not found at ${ROOT}/${PEARAI_SUBMODULE_PATH}"
+elif [[ -d "${PEARAI_SUBMODULE_PATH}" ]]; then
+    EXTENSION_PATHS+=("${PEARAI_SUBMODULE_PATH}")
 fi
 
 # Function to check if directory exists and add to extension paths
